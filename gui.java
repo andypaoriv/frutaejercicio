@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import repaso1.fruteria;
-import repaso1.listafruteria;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -99,11 +97,30 @@ public class gui extends JFrame {
 		contentPane.add(btnNewButton_terminar);
 		
 		JButton btnNewButtonAnterior = new JButton("Anterior");
+		btnNewButtonAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clasefruta anterior = fruta.IrAlAnterior();
+				textFieldNom.setText(anterior.getNombre());
+				textField_peso.setText(String.valueOf(anterior.getPeso()));
+				textField_color.setText(anterior.getColor());
+			}
+		});
 		btnNewButtonAnterior.setBounds(75, 154, 89, 23);
 		contentPane.add(btnNewButtonAnterior);
 		
 		JButton btnNewButtonSig = new JButton("Siguiente");
+		btnNewButtonSig.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clasefruta siguiente = fruta.IrAlSiguiente();
+				if (siguiente !=null) 
+					textFieldNom.setText(siguiente.getNombre());
+					textField_peso.setText(String.valueOf(siguiente.getPeso()));
+					textField_color.setText(siguiente.getColor());
+			}	
+		});
 		btnNewButtonSig.setBounds(200, 154, 89, 23);
 		contentPane.add(btnNewButtonSig);
-	}
+			
 }
+	}
+
